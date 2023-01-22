@@ -51,11 +51,3 @@ jobs:
     steps:
       - checkout
       - run: gradle build
-
-workflows:
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
