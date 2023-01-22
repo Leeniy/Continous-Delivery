@@ -44,3 +44,18 @@ jobs:
 
       # run tests!
       - run: gradle test
+  test: 
+    working_directory: ~/repro
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - run: gradle build
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
